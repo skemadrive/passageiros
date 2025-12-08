@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skema Drive - Passageiros</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #ffffff;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: #000000;
+            padding: 1rem 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        .btn-download {
+            background: linear-gradient(to right, #16a34a, #15803d);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-download:hover {
+            background: linear-gradient(to right, #15803d, #166534);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 5rem 2rem 2rem;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .hero-box {
+            background: linear-gradient(to right, #f0fdf4, #fef3c7);
+            border: 1px solid #86efac;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-box h3 {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-box p {
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.1));
+        }
+
+        /* CTA Section Below Hero */
+        .cta-hero {
+            text-align: center;
+            padding: 2rem;
+            background-color: #ffffff;
+        }
+
+        .cta-hero .btn-download {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 4rem 2rem;
+            background-color: #f9fafb;
+        }
+
+        .benefits-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .benefits h2 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .benefits-subtitle {
+            text-align: center;
+            color: #4b5563;
+            margin-bottom: 3rem;
+            font-size: 1.125rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-card p {
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Final Section */
+        .cta-final {
+            background-color: #000000;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-final-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .cta-final h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .cta-final p {
+            font-size: 1.125rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-final .btn-download {
+            background: linear-gradient(to right, #16a34a, #15803d);
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-final-note {
+            margin-top: 1.5rem;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 5rem 1rem 1rem;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.875rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .hero-image img {
+                max-width: 100%;
+            }
+
+            .benefits h2 {
+                font-size: 1.875rem;
+            }
+
+            .cta-final h2 {
+                font-size: 1.875rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .hero-image {
+            animation: fadeIn 0.6s ease-out 0.2s backwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo-skema.png" alt="Skema Drive">
+            </div>
+            <nav>
+                <a href="#beneficios">Benefícios</a>
+                <a href="#por-que">Por que escolher</a>
+                <a href="https://play.google.com/store/apps/details?id=br.com.skemadrive.passenger.taximachine" class="btn-download">Baixar App</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <h1>Conheça a Skema Drive</h1>
+                <p class="hero-subtitle">O app de corridas feito para o Macapaense economizar</p>
+                <p>🚕 Viaje com mais economia, segurança e rapidez — Skema Drive, o app 100% amapaense feito para você!</p>
+                <div class="hero-box">
+                    <h3>Ganhe 10% de desconto na sua primeira corrida</h3>
+                    <p>Pague menos do que nos apps tradicionais e conte com uma central de atendimento real, aqui em Macapá, pronta para te ajudar.</p>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="hero-passageiro.png" alt="Passageiro usando Skema Drive">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Button Below Hero -->
+    <section class="cta-hero">
+        <a href="https://play.google.com/store/apps/details?id=br.com.skemadrive.passenger.taximachine" class="btn-download">
+            Baixar o App → 
+        </a>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="beneficios">
+        <div class="benefits-container">
+            <h2>⭐ Por que escolher a Skema Drive?</h2>
+            <p class="benefits-subtitle">Tudo que você precisa para viajar com segurança, economia e confiança</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💸</div>
+                    <h3>Corridas mais baratas</h3>
+                    <p>Pague menos do que nos aplicativos tradicionais, sem surpresas no final.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎁</div>
+                    <h3>10% de desconto</h3>
+                    <p>Válido para novos passageiros que baixarem o app hoje.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📞</div>
+                    <h3>Atendimento humano</h3>
+                    <p>Nada de robôs. Fale com alguém da cidade, que entende a cidade.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏙️</div>
+                    <h3>App 100% amapaense</h3>
+                    <p>Tecnologia feita aqui, por gente que vive o dia a dia de Macapá.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚘</div>
+                    <h3>Segurança e confiança</h3>
+                    <p>Motoristas verificados, suporte rápido e um app feito para ser simples e confiável.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📲</div>
+                    <h3>App simples e intuitivo</h3>
+                    <p>Interface amigável que qualquer pessoa consegue usar com facilidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final Section -->
+    <section class="cta-final" id="por-que">
+        <div class="cta-final-container">
+            <h2>Comece sua jornada agora</h2>
+            <p>Baixe o app Skema Drive e aproveite 10% de desconto na sua primeira corrida. Viaje com economia, segurança e a confiança de quem entende Macapá.</p>
+            <a href="https://play.google.com/store/apps/details?id=br.com.skemadrive.passenger.taximachine" class="btn-download">
+                Baixar o App na Play Store →
+            </a>
+            <p class="cta-final-note">Disponível para Android. iOS em breve.</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
